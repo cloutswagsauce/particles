@@ -1,34 +1,35 @@
-# Particle Physics Simulator
+# Particle Physics Simulator (SDL Graphics Version)
 
-A simple 2D particle physics simulator that demonstrates gravitational interactions between particles with elastic collisions and boundary conditions.
+A graphical 2D particle physics simulator that demonstrates gravitational interactions between particles with elastic collisions and boundary conditions. Features real-time visualization using SDL2.
 
 ## Features
 
+- Graphical visualization using SDL2
+- Continuous simulation with smooth animation
 - Gravitational interactions between particles using Newton's law of universal gravitation
 - Elastic collisions between particles
 - Boundary conditions with elastic walls
-- Real-time ASCII visualization
-- Energy calculation and tracking
-- Auto-simulation mode with adjustable speed
-- Preset configurations (Solar System and Binary System)
+- Color-coded particles based on type:
+  - Yellow: Sun/massive central body
+  - Blue: Earth-like planets
+  - Red: Mars-like planets
+  - Orange: Jupiter-like gas giants
+- Particle size scaled based on mass
+- 60 FPS display refresh rate
 
 ## Controls
 
-1. Add new particle - Create a new particle with custom position, velocity, and mass
-2. Run simulation step - Advance the simulation by one step
-3. Toggle auto-simulation mode - Run the simulation continuously
-4. Adjust simulation speed - Change the number of physics steps per display update
-5. Load solar system preset - Create a simple solar system configuration
-6. Load binary system preset - Create a binary star system with orbiting particles
-7. Exit - Quit the simulator
-
-## Visualization
-
-The simulator uses ASCII characters to represent particles:
-- 'O' - Massive bodies (mass > 1e9)
-- 'o' - Medium mass bodies (mass > 1e6)
-- '*' - Small mass bodies
-- '.' - Empty space
+Interactive controls available during simulation:
+- Space: Pause/Resume simulation
+- + (Plus): Zoom in to get a closer view
+- - (Minus): Zoom out to see more of the system
+- Right Arrow: Speed up simulation
+- Left Arrow: Slow down simulation
+- R: Reset simulation to initial state
+- Left Mouse Click: Add a new planet-sized particle
+- Right Mouse Click: Add a new star-sized particle (massive body)
+- Mouse Movement: Determines initial velocity of new particles
+- Close window to exit simulation
 
 ## Physics Implementation
 
@@ -37,23 +38,51 @@ The simulator uses ASCII characters to represent particles:
 - Boundary conditions using elastic wall collisions
 - Velocity Verlet integration for particle motion
 
+## Requirements
+
+You need SDL2 development libraries installed on your system:
+
+For Ubuntu/Debian:
+```bash
+sudo apt-get install libsdl2-dev
+```
+
+For macOS (using Homebrew):
+```bash
+brew install sdl2
+```
+
+For Windows:
+1. Download SDL2 development libraries from https://www.libsdl.org/
+2. Set up your development environment accordingly
+
 ## Usage
 
 Compile the program with:
-```
-gcc particle_sim.c -o particle_sim -lm
+```bash
+# Linux/macOS
+gcc particle_sim_sdl.c -o particle_sim_sdl -lSDL2 -lm
+
+# Windows (MinGW)
+gcc particle_sim_sdl.c -o particle_sim_sdl -I<SDL2_include_path> -L<SDL2_lib_path> -lSDL2 -lm
 ```
 
 Run the simulator:
-```
-./particle_sim
+```bash
+./particle_sim_sdl
 ```
 
 ## Tips
 
-- Start with preset configurations to see interesting orbital dynamics
-- Experiment with different mass ratios and velocities
-- Use auto-simulation mode with different speeds to observe long-term behavior
-- Add new particles to create your own gravitational systems
+- The simulation starts with a solar system configuration
+- Watch how the planets orbit around the central star
+- Observe how gravity affects the trajectories of bodies
+- Notice the elastic collisions when bodies get too close
+- The particle size indicates its mass
+- Use zoom controls to observe details or view the entire system
+- Adjust simulation speed to observe fast or slow motion effects
+- Particle trails show the path of each body
+- Click and drag to create new particles with initial velocity
+- Left click creates smaller bodies, right click creates massive bodies
 
 Created with [**Solver**](https://solverai.com)

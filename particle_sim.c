@@ -18,7 +18,20 @@
 
 #define DISPLAY_WIDTH 40
 #define DISPLAY_HEIGHT 20
+#define MAX_PARTICLES 100
+#define G 6.67430e-11  // Gravitational constant
+#define DT 0.01        // Time step
+#define COLLISION_DISTANCE 5.0  // Distance at which particles collide
+#define ELASTICITY 0.8        // Coefficient of restitution for collisions
+#define BOUNDARY_X 500.0      // Boundary limits for x-axis
+#define BOUNDARY_Y 500.0      // Boundary limits for y-axis
 
+typedef struct {
+    double x, y;       // Position
+    double vx, vy;     // Velocity
+    double mass;       // Mass
+    int active;        // Whether particle is active
+} Particle;
 // Function to map simulation coordinates to display coordinates
 int map_to_display(double value, double max_value, int display_size) {
     return (int)((value + max_value) * (display_size - 1) / (2 * max_value));
@@ -59,19 +72,6 @@ void display_particles(Particle* particles, int num_particles) {
     }
     printf("Legend: O = massive body, o = medium mass, * = small mass\n");
 }
-#define MAX_PARTICLES 100
-#define G 6.67430e-11  // Gravitational constant
-#define DT 0.01        // Time step
-#define COLLISION_DISTANCE 5.0  // Distance at which particles collide
-#define ELASTICITY 0.8        // Coefficient of restitution for collisions
-#define BOUNDARY_X 500.0      // Boundary limits for x-axis
-#define BOUNDARY_Y 500.0      // Boundary limits for y-axis
-typedef struct {
-    double x, y;       // Position
-    double vx, vy;     // Velocity
-    double mass;       // Mass
-    int active;        // Whether particle is active
-} Particle;
 
 // Initialize a particle with given parameters
 void init_particle(Particle* p, double x, double y, double vx, double vy, double mass) {
