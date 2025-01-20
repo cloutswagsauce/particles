@@ -38,37 +38,19 @@ Interactive controls available during simulation:
 - Boundary conditions using elastic wall collisions
 - Velocity Verlet integration for particle motion
 
-## Requirements
+## Building and Running
 
-You need SDL2 development libraries installed on your system:
+For detailed building instructions for all operating systems, see [BUILDING.md](BUILDING.md).
 
-For Ubuntu/Debian:
+Quick start (Linux/macOS):
 ```bash
-sudo apt-get install libsdl2-dev
-```
+# Make build script executable
+chmod +x build.sh
 
-For macOS (using Homebrew):
-```bash
-brew install sdl2
-```
+# Build and install dependencies
+./build.sh
 
-For Windows:
-1. Download SDL2 development libraries from https://www.libsdl.org/
-2. Set up your development environment accordingly
-
-## Usage
-
-Compile the program with:
-```bash
-# Linux/macOS
-gcc particle_sim_sdl.c -o particle_sim_sdl -lSDL2 -lm
-
-# Windows (MinGW)
-gcc particle_sim_sdl.c -o particle_sim_sdl -I<SDL2_include_path> -L<SDL2_lib_path> -lSDL2 -lm
-```
-
-Run the simulator:
-```bash
+# Run the simulator
 ./particle_sim_sdl
 ```
 
